@@ -1,0 +1,652 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Minion Variable Concept';
+}
+nav{
+    height:80px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 0px 50px 0px 50px;
+    border-bottom: 4px solid black;
+}
+
+
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin: 0 5px;
+}
+
+nav ul li a button{
+    background-color: white;
+    color:black;
+    text-decoration: none;
+    font-size:26px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding:8px 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+nav ul li a .active{
+    background: black;
+    color: white;
+}
+
+nav ul li a button:hover{
+    background: black;
+    color: white;
+}
+
+nav .menu-button i{
+    color: black;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+}
+#menu{
+    display: none;
+}
+
+.background{
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 6px;
+    background: url("img/job_search_portals.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.backgroundemployee{
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 6px;
+    background: url("img/1573949707716.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.backgroundjobseeker{
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 6px;
+    background: url("img/dt_48569988_jobsearch.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/*about us*/
+#main{
+    height: 860px;
+    margin-top: 5px;
+    padding: 15px;
+    background-image: url(img/job_search_portals.png);
+    background-size: cover;
+    
+}
+aside#sidebar {
+    float: right;
+    width: 40%;
+    margin-top: 300px;
+    margin-right: 90px;
+    margin-bottom: 50px;
+}
+
+.about-text{
+    font-size: 20px;
+
+}
+
+article#main-col {
+    float: left;
+    width: 40%;
+    margin-top: 5px;	
+    margin-left: 90px;
+    margin-bottom: 50px;
+}
+
+.dark{
+    background-color: #4686b4;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    font-size: 16px;
+}
+
+.page-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.Introduction{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title{
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-shadow: 1px 1px #696969;
+    padding: 3px;
+    margin: 8px;
+    margin-top: 20px;
+}
+.mySlides{
+    display:none;
+}
+
+.description{
+    font-family: "Josefin Sans";
+    font-size: 19px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.facilities{
+    text-align: left;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-shadow: 1px 1px #696969;
+    padding: 3px;
+    margin-top: 20px;
+}
+.facilitiespoint{
+    font-family: "Josefin Sans";
+    font-size: 19px;
+    padding: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+footer{
+    padding-top: 10px;
+    background-color: Black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    height: 70px;
+    margin-top: 5px;
+}
+
+.search-box{
+    text-align: right;
+}
+
+.search-box input[type=text]{
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    width: 50%;
+    font-size: 24px;
+    margin-top: 5px;
+    padding: 3px 5px 3px 5px;
+    outline: none;
+}
+
+.search-box button{
+    font-size: 24px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border: 1px solid black;
+    padding: 3px 5px 3px 5px;
+}
+
+.search-box button :hover{
+    cursor: pointer;
+}
+
+.bgmodal{
+    width:100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    overflow: hidden;
+}
+.container_signup{
+    border: 1px solid black;
+    width: 40%;
+    text-align: center;
+    height: 73vh;
+    border-radius: 10px;
+    background-color: #143d59;
+    margin: 0 auto;
+    opacity: 1;
+    margin-top: 70px;
+    position: relative;
+}
+.container_signin{
+    border: 1px solid black;
+    width: 40%;
+    text-align: center;
+    height: 55vh;
+    border-radius: 10px;
+    background-color: #143d59;
+    margin: 0 auto;
+    opacity: 1;
+    margin-top: 70px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+.close:hover{
+    color: white;
+}
+
+.qoute{
+    display: grid;
+    row-gap: 0%;
+    grid-template-columns: auto;
+    place-items: center;
+    height: 13vh;
+    margin-top: 7px;
+    font-size: xx-large;
+}
+
+.qoutedesign{
+    font-family: 'Brush Script MT';
+    text-align: center;
+}
+
+.catagory{
+    height: 75vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    grid-gap: 0px;
+    margin-top: 10px;
+    place-items: center;
+}
+.buy{
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 100px;
+    width: 55%;
+    height: 63vh;
+    text-align: center;
+    padding-top: 10px;
+    box-shadow: 5px 5px #a9a9a9;
+}
+.buy:hover{
+    width: 56%;
+    height: 66vh;
+    
+}
+.buyimg{
+    width: 80%;
+    height:30vh;
+    border-radius: 50px;
+}
+
+.catagoryfont{
+    padding-top: 7px;
+    font-size: 27px;
+}
+
+.subfont{
+    font-size: 20px;
+    padding: 4px;
+}
+.catagorybutton{
+    margin-top: 10px;
+    padding: 3px;
+    font-size: x-large;
+    width: 30%;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 3px 3px #a9a9a9;
+}
+
+.catagorybutton:hover{
+    color: white;
+    background-color: black;
+}
+
+
+.abtus{
+    font-size: larger;
+    text-align: center;
+    height: 10vh;
+    margin-top: 5px;
+    margin: 0 auto;
+    background-color: #F5F5F5;
+    width: 90%;
+}
+
+.signdesign{
+    text-align: left;
+    font-size: large;
+    padding-left: 20px;
+    padding-right: 30px;
+    width: 100%;
+    margin: 0 auto;
+}
+.in{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: x-large;
+    background-color: #d7dce1;
+    border-radius: 5px;
+    display: inline-block;
+    outline: none;
+}
+.signbtn{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px;
+    border-radius: 5px;
+    background-color: #103147;
+    font-size: x-large;
+    cursor: pointer;
+}
+.signbtn:hover{
+    color: white;
+}
+
+.footer{
+    display: grid;
+    grid-template-columns: auto;
+    height: 50vh;
+    margin-bottom: 2px;
+}
+
+.subfooter{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.thirdfooter{
+    text-align: center;
+}
+
+/*joblist*/
+.forsale{
+    height: 100%; 
+    width: 100%;
+}
+.subsale{
+    border: 1px solid black;
+    
+}
+
+.typeofproperty{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width:90%;
+    margin: 0 auto;
+}
+
+.house{
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.morehouse{
+    font-size: 28px;
+    text-align: right;
+}
+
+.subseller{
+    width: 90%;
+    margin: 0 auto;
+    height:48vh;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-gap: 5px;
+}
+
+.salecard{
+    width: 88%;
+    height: 45vh;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+.view{
+    border:1px;
+    background-color: green;
+    color: white;
+    width:20%;
+    font-size: larger;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2.5px 2.5px black;
+}
+
+.imgsale{
+    width:100%;
+    text-align: center;
+}
+
+.subsellerhouse{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-gap: 5px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding:5px;
+}
+
+.page{
+    color:black;
+    background-color: grey;
+    border:none;
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 5px;
+    padding: 1px;
+    border-radius: 10px;
+}
+
+.houseonsale{
+    height: 83vh;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.typeofpropertyforsale{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width:98%;
+    margin: 0 auto;
+    height: 85vh;
+    background-color: white;
+}
+.typeofpropertybuyerinfo{
+    height: 35vh;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+.sellerinformation{
+    margin-top: 10px;
+    height:30vh;
+    width: 90%;
+    padding: 10px;
+    font-size: 22px;
+    background-color: #ededed;
+    box-shadow:  0 3px 10px rgb(0 0 0 / 0.4); 
+}
+
+.housesale{
+    margin-top: 10px;
+    height:80vh;
+    width: 80%;
+    padding: 10px;
+    font-size: 22px;
+    background-color: #ededed;
+    box-shadow:  0 3px 10px rgb(0 0 0 / 0.4); 
+}
+
+.congras{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    width:100%;
+}
+
+.decore{
+    height: 80vh;
+    margin:10px;
+}
+
+.congratulation{
+    height: 80vh;
+    margin-top: 10px;
+    background-color:  #ededed;
+}
+.consold{
+    border:1px;
+    background-color: green;
+    color: white;
+    width:22%;
+    font-size: x-large;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2.5px 2.5px black;
+    float:right;
+}
+
+.emtmsg{
+    height: 30vh;
+    width: 100%;
+}
+@media (max-width: 940px){
+
+    
+    nav{
+        padding-right: 10px ;
+        border-bottom: 4px solid black ;
+        padding: 0px 20px 0px 25px;
+    }
+    
+    nav ul{
+        position:fixed;
+        top: 80px;
+        right: -100%;
+        background: black;
+        height: 100vh;
+        width:100%;
+        display: block;
+        text-align:center;
+        transition: all 0.3s ease;
+   }
+    nav ul li{
+        margin:40px 0;
+        
+    }
+    nav ul li a button{
+        background-color: black;
+        color:white;
+    }
+    nav ul li a .active{
+        background: white;
+        color: black;
+    }
+    
+    nav ul li a button:hover{
+        background: white;
+        color: black;
+    }
+    
+
+    nav .menu-button i{
+        display: block;
+    }
+    #menu:checked ~ ul{
+        right: 0%;
+    }
+    #menu:checked ~ .menu-button i:before{
+        content: "\f00d";
+    }
+    .background{
+        height: 250px;
+    }
+    .search-box input[type=text]{
+        font-size: 15px;
+        width: 23%;
+        padding: 2px 4px 2px 4px;
+    }
+    
+    .search-box button{
+        font-size: 15px;
+        margin-right: 3px;
+        padding: 2px 4px 2px 4px;
+    }
+    .container_signin{
+        width: 70%;
+        height: 70vh;
+    }
+
+    .container_signup{
+        width: 70%;
+        height: 75vh;
+    }
+    .catagory{
+        height: 150vh;
+        grid-template-columns: auto;
+    }
+    .buy{
+        width: 60%;
+        height: 65vh;
+        margin-top: 13px;
+    }
+    .buy:hover{
+        width: 62%;
+        height: 67vh;
+    }
+    
+    .catagoryfont{
+        padding-top: 7px;
+        font-size: 25px;
+    }
+    
+    .subfont{
+        font-size: 18px;
+    }
+    .buyimg{
+        border-radius: 70px;
+    }
+    .abtus{
+        height: 28vh;
+    }
+    
+}
