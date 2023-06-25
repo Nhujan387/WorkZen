@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-        <link rel="stylesheet" href="homeStyle.css"/>
+        <link rel="stylesheet" href="../homepage_style.css"/>
         <style>
             .errormsg{
                 color: red; 
@@ -60,7 +60,7 @@
         }
         .container{
             width: 35%;
-            height: 70vh;
+            height: 87vh;
             margin: 0 auto;
             margin-top: 105px;
             background: rgba(255, 255, 255, 1);
@@ -116,14 +116,22 @@
                 <div id="signup">
                         <form method="POST" id="signup-form" onsubmit="event.preventDefault(); signupvalidate()" >
                         <input type="number" name="forsignin" value="1" hidden>
-                            <label for="name"><b>Full Name</b></label>
-                            <span class="errormsg"  id="for_name" >User name cannot be empty </span></br>
-                            <input class="inputstyle" type="text" placeholder="Enter your name" name="name" id="name" > <br>
+                            <label for="name"><b>Company Name</b></label>
+                            <span class="errormsg"  id="for_name" >Company name cannot be empty </span></br>
+                            <input class="inputstyle" type="text" placeholder="Enter your company name" name="name" id="name" > <br>
                              
                             <label for="email"><b>Email</b></label> 
                             <span class="errormsg" id="for_email" >Email cannot be empty <br/></span> 
                             <span class="errormsg" id="for_emailvr" >Email id already exists <br/></span> 
                             <input  class="inputstyle" type="text" placeholder="Enter email" name="email" id="email" > <br>
+
+                            <label for="contact"><b>Contact no</b></label> 
+                            <span class="errormsg" id="for_contact" >Contact cannot be empty <br/></span> 
+                            <input  class="inputstyle" type="text" placeholder="Enter contact number" name="contact" id="contact" > <br>
+
+                            <label for="location"><b>Location</b></label> 
+                            <span class="errormsg" id="for_location" >Location cannot be empty <br/></span> 
+                            <input  class="inputstyle" type="text" placeholder="Enter location" name="location" id="location" > <br>
                             
                             <label for="psw"><b>Password</b></label> 
                             <span class="errormsg" id="for_password">Password cannot be empty <br/></span> 
@@ -206,6 +214,8 @@
         function signupvalidate(){
                  userName = document.getElementById('name').value;
                  Email = document.getElementById('email').value;
+                 Location = document.getElementById('location').value;
+                 Contact = document.getElementById('contact').value;
                  Password = document.getElementById('psw').value;
                  ConfirmPassword = document.getElementById('pswcon').value;
                  isValidate = true;
@@ -221,6 +231,18 @@
                      isValidate = false; 
                 }else{
                     document.getElementById('for_email').style.display = 'none';
+                }
+                if(Location == ''){
+                     document.getElementById('for_location').style.display = 'block';
+                     isValidate = false; 
+                }else{
+                    document.getElementById('for_location').style.display = 'none';
+                }
+                if(Contact == ''){
+                     document.getElementById('for_contact').style.display = 'block';
+                     isValidate = false; 
+                }else{
+                    document.getElementById('for_contact').style.display = 'none';
                 }
 
                 if(Password == ''){
@@ -269,6 +291,8 @@
         $email = $_REQUEST['email'];
         $password = $_REQUEST['psw'];
         $enc_password = password_hash($password,PASSWORD_DEFAULT);
+        $location = $_REQUEST['location'];
+        $contact = $_REQUEST['contact'];
 
         $checkuser = "SELECT * FROM `employerlogin` WHERE Email_Address_E = '$email'";
         $check = mysqli_query($conn,$checkuser);
@@ -292,7 +316,7 @@
            
            <?php
         }else{
-            $conn->query("INSERT INTO `employerlogin`(`Fullname_E`, `Email_Address_E`, `Password_E`) VALUES ('$full_name', '$email','$enc_password')") ;
+            $conn->query("INSERT INTO `employerlogin`(`Fullname_E`, `Email_Address_E`, `Password_E`, `Location`, `Contact`) VALUES ('$full_name', '$email','$enc_password','$location','$contact')") ;
 
            ?>
            <script>
@@ -333,7 +357,7 @@
             $pass_decode = password_verify($password, $db_pass);
     
             if($pass_decode){
-                $_SESSION['username'] = $email_check['EmployerID'];
+                $_SESSION['username'] = $email_check['employer_id'];
                 ?>
                <script>
                    function showmsgl(){

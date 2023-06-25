@@ -29,8 +29,8 @@ include 'signmodal_employer.php' ;
     </label>
     <ul>
         <li> <a href="http://workzen.com/employer/employerHome.php" ><button class="active">Employer Hub</button></a></li>      
-        <li> <a href="about.php"><button>List Out Job</button></a></li>
-        <li> <a href="service.php"><button>Check Application</button></a></li>
+        <li> <a href="listjob.php"><button>List Out Job</button></a></li>
+        <li> <a href="checkapplication.php"><button>Check Application</button></a></li>
         <?php 
             if(!isset($_SESSION['username'])){?>
             <li> <a><button onclick="document.getElementById('signdiv').style.display='block'">Sign in</button></a></li>

@@ -68,25 +68,25 @@
                     <h2><u>Contact Information</u></h2><br/>
                     <div class="contContact">
                         <h3>Address</h3> 
-                        <p>44600, Chhusya Galli, Jyatha, Kathmandu, Nepal</p>
-                    </div>
+                        <p>999 Boul. de Maisonneuve Ouest, Montréal, QC H3A 3L4, Canada</p>
+                    </div><br/>
 
                     <div class="contPhone"> 
                         <h3>Phone</h3>
                         <p>
                             01-4567890
                         </p>
-                    </div>
+                    </div><br/>
 
                     <div class="contTelephone">
                         <h3>Telephone</h3>
                         <p>+977-9818123987</p>
-                    </div>
+                    </div><br/>
 
                     <div class="contEmail">
                         <h3>Email</h3>
                         <p>WorkZen@gmail.com</p>
-                    </div>
+                    </div><br/>
                 </div>
             </div>
             </div>

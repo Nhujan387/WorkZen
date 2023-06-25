@@ -1,13 +1,17 @@
 <?php
-    session_start();
-    include '../database_configure.php';
+session_start();
+include '../database_configure.php';
+$jid = $_GET['sk_id'];
+    
+    $month = date('m');
+    $day = date('d');
+    $year = date('Y');
 
-    if(!isset($_SESSION['username'])){
-    ?><script type='text/javascript'>alert('Signin before submitting form'); location.replace("http://workzen.com/jobseeker/resumepage.php");</script><?php
-    }else{
-            if($_POST){
-               
-                $Sname = $_REQUEST['fullname'];
+    $today = $year . '-' . $month . '-' . $day;
+
+    if($_POST){
+    
+        $Sname = $_REQUEST['fullname'];
                 $Semail = $_REQUEST['email_s'];
                 $Scontact = (int)$_REQUEST['contact_s'];
 
@@ -51,17 +55,11 @@
                     $destinationfile = '../img/'.$filename;
                     move_uploaded_file($filetmp,$destinationfile);
                 }
-                
-                  $insert ="INSERT INTO `seekerresume`(`FullName`, `EmailAddress`, `Contact`, `Country`, `Provience`, `City`, `Address`, `pdffile`, `image`, `Seeker_id`, `Education`, `Workexp`, `skill`) VALUES ('$Sname','$Semail','$Scontact','$Scountry','$Sproviend','$district','$address','$destinationfile2','$destinationfile','$user','$education','$experience','$skill')";
 
+                $update = "UPDATE `seekerresume` SET `FullName`='$Sname',`EmailAddress`='$Semail',`Contact`='$Scontact',`Country`='$Scountry',`Provience`='$Sproviend',`City`='$district',`Address`='$address',`pdffile`='$destinationfile2',`image`='$destinationfile',`Education`='$education',`Workexp`='$experience',`skill`='$skill' WHERE sk_id = $jid";
 
-                  if($insert){
-                    ?> <script>alert('Your CV has been Uploaded.');location.replace("http://workzen.com/jobseeker/jobseekerHome.php");</script> <?php }
-                  
-                $query = mysqli_query($conn,$insert);
-
-                    
-            }
+                if($update){ ?> <script>alert('Resume updated successful');location.replace("resumepage.php");</script><?php }
+        $query = mysqli_query($conn,$update);
     }
-?>
 
+?>

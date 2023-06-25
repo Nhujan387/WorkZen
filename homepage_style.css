@@ -89,7 +89,7 @@ nav .menu-button i{
     height: 860px;
     margin-top: 5px;
     padding: 15px;
-    background-image: url(img/job_search_portals.png);
+    background-image: url(img/Job-search-networking.jpg);
     background-size: cover;
     
 }
@@ -115,7 +115,7 @@ article#main-col {
 }
 
 .dark{
-    background-color: #4686b4;
+    background-color: #4685DA;
     border-radius: 10px;
     padding: 15px;
     color: white;
@@ -427,12 +427,22 @@ footer{
     grid-gap: 5px;
 }
 
-.salecard{
+.salecard2{
     width: 88%;
-    height: 45vh;
+    height: 28vh;
+    padding:6px;
     border: 1px solid black;
     border-radius: 3px;
     margin: 0 auto;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    background-image: url(img/wuuaobghtdllhliu.jpg);
+}
+
+.salecard2 :hover{
+    cursor: pointer;
 }
 .view{
     border:1px;
@@ -454,7 +464,7 @@ footer{
     width: 90%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-gap: 5px;
 }
 .pagination{

@@ -5,7 +5,7 @@
     if(!isset($_SESSION['username'])){
         ?><script type='text/javascript'>alert('Please sign in first'); location.replace("http://workzen.com/jobseeker/jobseekerHome.php");</script><?php
         }
-
+        $aid = $_SESSION['username'];
 ?>
 <?php 
 
@@ -36,7 +36,7 @@
     </label>
     <ul>
         <li> <a href="http://workzen.com/jobseeker/jobseekerHome.php" ><button>Seekers Hub</button></a></li>      
-        <li> <a href="about.php"><button>Find Job</button></a></li>
+        <li> <a href="joblist.php"><button>Find Job</button></a></li>
         <li> <a href="resumepage.php"><button class="active">Resume Here</button></a></li>
         <?php 
             if(!isset($_SESSION['username'])){?>
@@ -53,7 +53,7 @@
         </div>
         <div class="Sellorder" style="margin-top: 5px; margin-bottom:10px;">
             <div class=" subsell">
-                <a href="sellstat.php"><button class="salestat">Manage/Update CV</button></a>
+                <a href="viewcv.php?j_id=<?php echo $aid;?>"><button class="salestat">Manage/Update CV</button></a>
                 <hr style="color: 3px aliceblue; width: 93%; margin: 0 auto; margin-top: 15px; margin-bottom: 10px;">
                 <div class="tips">Some important things to remember when searching for a job.</div> <br/>
                 <div class="tips2" >
@@ -102,70 +102,18 @@
                         <label class="info">Address:</label>
                         <input  type="text" name="address" id="address"> 
 
-                        <div class="subheads">Education</div>
-                        <label class="infor" style="font-weight:bold;">School Level</label><br/>
-                        <label class="info">School name:</label>
-                        <input type="text" name="school" id="school" >
-                        <label class="info">GPA 10 Grade</label>
-                        <input  type="number" name="gpaSchool" id="gpaSchool" step="0.1">
-                        <label class="info">Completion date</label>
-                        <input  type="date" name="schooldate" id="schooldate"><br/>
+                        <div class="subheads">Education qualification</div>
+                        <textarea id="education" name="education" style="width:100%;height:18vh;" row="8" placeholder="Company A - designation (year-year),"></textarea><br/>
 
-                        <label class="infor" style="font-weight:bold;">+2 Level</label><br/>
-                        <label class="info">College name:</label>
-                        <input type="text" name="college" id="college" >
-                        <label class="info">GPA +2 Grade</label>
-                        <input  type="number" name="gpacolz" id="gpacolz" step="0.1">
-                        <label class="info">Completion date</label>
-                        <input  type="date" name="colzdate" id="colzdate"><br/>
+                        <div class="subheads">Skill</div>
+                        <textarea id="skill" name="skill" style="width:100%;height:18vh;" row="8"></textarea><br/>
 
-                        <label class="infor" style="font-weight:bold;">Bachelor Level</label><br/>
-                        <label class="info">College name:</label>
-                        <input type="text" name="collegeBach" id="collegeBach" >
-                        <label class="info">GPA Grade</label>
-                        <input  type="number" name="gpaBach" id="gpaBach" step="0.1">
-                        <label class="info">Completion date</label>
-                        <input  type="date" name="bachdate" id="bachdate"><br/>
-
-                        <div class="subheads">Work History</div>
-                        <label class="infor" style="font-weight:bold;">Company 1</label><br/>
-                        <label class="info">Prev-company:</label>
-                        <input type="text" name="pre_Company" id="pre_Company" >
-                        <label class="info">Position/Title:</label>
-                        <input  type="text" name="position" id="position">
-                        <label class="info">Start date:</label>
-                        <input  type="date" name="sdate" id="sdate"><br/>
-                        <label class="info">End date:</label>
-                        <input  type="date" name="edate" id="edate"><br/>
-
-                        <label class="infor" style="font-weight:bold;">Company 2</label><br/>
-                        <label class="info">Prev-company:</label>
-                        <input type="text" name="pre_Company2" id="pre_Company2" >
-                        <label class="info">Position/Title:</label>
-                        <input  type="text" name="position2" id="position2">
-                        <label class="info">Start date:</label>
-                        <input  type="date" name="sdate2" id="sdate2"><br/>
-                        <label class="info">End date:</label>
-                        <input  type="date" name="edate2" id="edate2"><br/>
-
-                        <label class="infor" style="font-weight:bold;">Company 3</label><br/>
-                        <label class="info">Prev-company:</label>
-                        <input type="text" name="pre_Company3" id="pre_Company3" >
-                        <label class="info">Position/Title:</label>
-                        <input  type="text" name="position3" id="position3">
-                        <label class="info">Start date:</label>
-                        <input  type="date" name="sdate3" id="sdate3"><br/>
-                        <label class="info">End date:</label>
-                        <input  type="date" name="edate3" id="edate3"><br/>
+                        <div class="subheads">Work Experience</div>
+                        <textarea id="work" name="work" style="width:100%;height:18vh;" row="8"></textarea><br/>
 
                         <div class="subheads">Upload files in PDF Format</div>
                         <input name="userfile" id="userfile" type="file" accept="application/pdf"/>
                         
-                    </fieldset>
-                    <fieldset style="border: 1px solid black; width: 98%;  margin: 0 auto;">
-                        <legend style="font-size: 20px; font-weight: bold; ">More Information</legend>
-                        <div class="subheads">Description</div>
-                        <textarea name="description" id="description" style="margin:5px; width:600px; height: 20vh;overflow-y: scroll;" > </textarea></br></br>
                     </fieldset>
                             <input type="submit" value="Submit" class="submit"/>
                 </form>

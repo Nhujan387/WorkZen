@@ -4,7 +4,7 @@
      include '../database_configure.php';
     
      $currentPage = 0;
-     $searchlimit = 6;
+     $searchlimit = 3;
  
      if(isset($_GET['page'])){
          if($_GET['page']<=0 || !is_numeric($_GET['page'])){
@@ -38,6 +38,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Workzen | JOBs</title>
         <link rel="stylesheet" href="../homepage_style.css"/>
+        <link rel="stylesheet" href="resumestyle.css"/>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -50,8 +51,8 @@
         <i class="fas fa-bars"></i>
     </label>
     <ul>
-        <li> <a href="http://workzen.com/jobseeker/jobseekerHome.php" ><button class="active">Seekers Hub</button></a></li>      
-        <li> <a href="joblist.php"><button>Find Job</button></a></li>
+        <li> <a href="http://workzen.com/jobseeker/jobseekerHome.php" ><button>Seekers Hub</button></a></li>      
+        <li> <a href="joblist.php"><button class="active">Find Job</button></a></li>
         <li> <a href="resumepage.php"><button>Resume Here</button></a></li>
         <?php 
             if(!isset($_SESSION['username'])){?>
@@ -63,6 +64,9 @@
         <?php }?>
     </ul>
 </nav>
+<div class="backgroundresume">
+            <h1 class="bannertextstyle">Find Your Choice of Job Here</h1>
+        </div>
         <div class="forsale">
             <div class="typeofproperty" style="margin-top:10px">
                 <div class="house">
@@ -70,7 +74,7 @@
                 </div>
                     <div class="search-box">
                         <form method="GET">
-                            <input type="text" name="location" placeholder="Search Location By District" />
+                            <input type="text" name="location" placeholder="Search by location" />
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -81,11 +85,9 @@
                 if($_GET){
                     $location = $_REQUEST['location'];
 
-                 /*$fetch = "SELECT s.s_id, s.property_type, s.Postdate, s.province, s.district, s.address, s.ropani, s.aana, s.paisa, s.dam,
-                 s.bedroom_number, s.toilet_number, s.floor, s.amount, s.current_address, s.phone, s.image, s.user_id, s.status , u.name 
-                FROM `sale` as s inner join user as u on s.user_id=u.user_id WHERE property_type='house' AND status='0' AND district='$location' ORDER BY `Postdate` DESC ";*/
+                 
 
-                $fetch = "SELECT * FROM `job_postings`";
+                $fetch = "SELECT j.job_id, j.title, j.location, j.salary, e.employer_id, e.Fullname_E FROM job_postings AS j JOIN employerlogin AS e ON j.employer_id = e.employer_id where j.location= '$location'";
                  $queryfetch = mysqli_query($conn,$fetch);
                  $datacheck = mysqli_num_rows($queryfetch);
 
@@ -93,14 +95,27 @@
 
                 while($result = mysqli_fetch_assoc($queryfetch)){
                 ?>
-                    <div class="salecard" style="margin-top:5px;">
-                        <p style="font-weight:bold;text-align:center;font-size: 22px;">Location at <?php echo $result['description'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;">Floor:<?php echo $result['requirements'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;">Land:<?php echo $result['location'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;margin-top:15px;">Salary:<?php echo $result['salary'];?></p>
-                        <a href="viewproperty.php?s_id=<?php echo $result['s_id']; ?>&user_id=<?php echo $result['user_id'];?>&name=<?php echo $result['name'];?>"><button class="view">view</button></a>
-                        </p>
+                    <a href="viewjobdetails.php?j_id=<?= $result['job_id'];?>&e_id=<?= $result['employer_id']; ?>" class="salecard2" style="display: block; margin-top: 5px; text-decoration: none; color: #000;">
+                    <div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left; text-decoration:underline;">Designation</p>
+                        <p style="margin-left: 20px; text-align: left;"><?php echo $result['title']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;">Company:</p>
+                        <p style="margin-left: 20px; text-align: left;"><?php echo $result['Fullname_E']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;">Salary:</p>
+                        <p style="margin-left: 20px; text-align: left;"><?php echo $result['salary']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;">Location:</p>
+                        <p style="margin-left: 20px; text-align: left;"><?php echo $result['location']; ?></p>
+                        </div>
+                        
                     </div>
+                    </a>
                 <?php } }else{
                         ?>
                         <div class="emtmsg">
@@ -111,23 +126,36 @@
                 
                     
                     }else{ 
-                   /* $fetch = "SELECT s.s_id, s.property_type, s.Postdate, s.province, s.district, s.address, s.ropani, s.aana, s.paisa, s.dam,
-                    s.bedroom_number, s.toilet_number, s.floor, s.amount, s.current_address, s.phone, s.image, s.user_id, s.status , u.name 
-                   FROM `sale` as s inner join user as u on s.user_id=u.user_id WHERE property_type='house' AND status='0' ORDER BY `Postdate` DESC";*/
-                   $fetch = "SELECT * FROM `job_postings`";
+                   
+                   $fetch = "SELECT j.job_id, j.title, j.location, j.salary, j.status, e.employer_id, e.Fullname_E FROM job_postings AS j JOIN employerlogin AS e ON j.employer_id = e.employer_id where j.status=1";
                     $queryfetch = mysqli_query($conn,$fetch);
 
                     while($result = mysqli_fetch_assoc($queryfetch)){
                     
                     ?>
-                    <div class="salecard" style="margin-top:5px;">
-                        <p style="font-weight:bold;text-align:center;font-size: 22px;">Location at <?php echo $result['description'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;">Floor:<?php echo $result['requirements'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;">Land:<?php echo $result['location'];?></p>
-                        <p style="margin-left:20px;font-weight:bold;text-align:center;margin-top:15px;">Salary:<?php echo $result['salary'];?></p>
-                        <a href="viewproperty.php"><button class="view">view</button></a>
-                        </p>
-                    </div><?php }} ?>
+                    <a href="viewjobdetails.php?j_id=<?= $result['job_id'];?>&e_id=<?= $result['employer_id']; ?>" class="salecard2" style="display: block; margin-top: 5px; text-decoration: none; color: #000;">
+                    <div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left; text-decoration:underline; color:white;">Designation</p>
+                        <p style="margin-left: 20px; text-align: left;color:white;"><?php echo $result['title']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;color:white;">Company:</p>
+                        <p style="margin-left: 20px; text-align: left;color:white;"><?php echo $result['Fullname_E']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;color:white;">Salary:</p>
+                        <p style="margin-left: 20px; text-align: left;color:white;"><?php echo $result['salary']; ?></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                        <p style="font-weight: bold; text-align: left;text-decoration:underline;color:white;">Location:</p>
+                        <p style="margin-left: 20px; text-align: left;color:white;"><?php echo $result['location']; ?></p>
+                        </div>
+                        
+                    </div>
+                    </a>
+                    
+                    <?php }} ?>
             </div>
         </div>
         <hr style="color: 3px aliceblue; width: 93%; margin: 0 auto; margin-top: 15px; margin-bottom: 10px;">
